@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100vh;
+    background: url("../assets/background3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.initialMessage {
+    height:100%;
+    background-color: white;
+    border-radius: 10px;
+    margin:0px 10px;
+}
+
+#gameCanvas {
+    margin:auto;
+}
+
+#friendbotImgDiv {
+    background: url("../assets/friendbot2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height:90%;
+    border:1px solid black;
+    border-radius:10px;
+}
+
+#friendbotInfo,
+#skipToGame {
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media (max-width:770px){
+    #mainMsg{
+        font-size:24px;
+    }
+}
+
+/*
+.game{
+    width: 800px;
+    height: 540px;
+    border: 1px solid black;
+    margin: auto;
+    background-image: url(background.jpeg);
+    background-size: 800px 540px;
+
+}
+*/
+
+/* Personagem*/
+
+/*
+#character{
+    width: 70px;
+    height: 70px;
+    background-image: url("asteroide.gif");
+    background-size: 70px 70px;
+    position:relative;
+    top: 560px;
+}
+
+*/
+
+/*duração do pulo*/
+
+/*
+.animate{
+    animation: jump 0.5s linear;
+}
+
+*/
+
+
+/* Pulo */
+
+/*
+@keyframes jump{
+    0%{top: 560px;}
+    30%{top: 500px;}
+    70%{top: 500px;}
+    100%{top: 560px;}
+}
+*/
+
+
+/*Obstaculo*/
+
+/*
+#block{
+    background-image: url("pedra.png");
+    background-size: 54px 54px;
+    width: 54px;
+    height: 54px;
+    position: relative;
+    top: 510px;
+    animation: block 4s infinite linear;
+}
+*/
+
+/* tragetoria do obstaculo*/
+
+/*
+@keyframes block{
+    0%{left: 950px}
+    100%{left: -20px}
+}
+*/
+
+/*Peça(foguete)*/
+
+/*
+#peça{
+    background-image: url("foguete.png");
+    background-size: 54px 54px;
+    width: 54px;
+    height: 54px;
+    position: relative;
+    top: 450px;
+    animation: block 5s infinite linear;
+}
+*/
+
+/* tragetoria da peça */
+
+/*
+@keyframes peça{
+    0%{left: 950px}
+    100%{left: -20px}
+} 
+
+p{
+    text-align: center;
+}
+*/
