@@ -20,7 +20,7 @@ $(()=>{
    })
 
    let friendbotImageDiv = '<div id="friendbotImgDiv" class="w-50"></div>'
-   let btnsDiv = '<div id="btnsDiv" class="w-50 h-75 p-2"></div>'
+   let btnsDiv = '<div id="btnsDiv" class="w-50 h-50 p-2"></div>'
    let btnListenToFriendbot = '<div><button id="friendbotInfo" class="btn-success w-100 p-2">Escute o Asteróide</button></div>'
    let btnSkipToGame = '<div><button id="skipToGame" class="btn-primary w-100 p-2 mt-3">Ajudar o Asteróide</button></div>'
    let infoPreGame = '<div id="infoPreGame" class="d-flex flex-row w-100 h-100"></div>'
