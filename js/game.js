@@ -58,6 +58,7 @@ $(()=>{
 })
 
   $('.mainWrapper').on('click', '#skipToGame', ()=>{
+     initialAudio.pause()
      $('.mainWrapper').find('.container').remove()
      $('.mainWrapper').append('<div id="gameCanvas"></div>')
      startGame()
@@ -317,7 +318,7 @@ $(()=>{
      scoreText3 = game.add.text(16, 44, 'Energia', { fontSize: '20px', fill:'#ffffff' })
 
      // Buttons
-     if(!windowWidth < 600){
+     /*if(!windowWidth < 600){
       buttonUp = game.add.button(800 - 100, 400,'buttonUp', ()=> console.log('up') , this)
       buttonUp.onInputUp.add(()=> isButtonUp = false, this)
       buttonUp.onInputDown.add(()=> isButtonUp = true, this)
@@ -333,7 +334,7 @@ $(()=>{
       buttonRight = game.add.button(800 - 60, 440,'buttonRight', ()=> console.log('right') , this)
       buttonRight.onInputUp.add(()=> isButtonRight = false, this)
       buttonRight.onInputDown.add(()=> isButtonRight = true, this)  
-   } else if(windowWidth < 600 ){
+   } else if(windowWidth < 600 ){*/
       buttonUp = game.add.button(800 - 140, 400,'buttonUpBig', ()=> console.log('up') , this)
       buttonUp.onInputUp.add(()=> isButtonUp = false, this)
       buttonUp.onInputDown.add(()=> isButtonUp = true, this)
@@ -349,8 +350,8 @@ $(()=>{
       buttonRight = game.add.button(800 - 70, 440,'buttonRightBig', ()=> console.log('right') , this)
       buttonRight.onInputUp.add(()=> isButtonRight = false, this)
       buttonRight.onInputDown.add(()=> isButtonRight = true, this)
-      }
-    }
+   
+   }
  
     function update() {  
        rocksPosition.forEach((rock)=> {
