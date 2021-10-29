@@ -220,6 +220,10 @@ $(()=>{
        game.load.image('rocket', 'assets/foguete.png')
        game.load.image('progressBar', 'assets/progressBar.png')
        game.load.image('energyBar', 'assets/lifeBar.png')
+       game.load.image('buttonUp','assets/buttonUpPressed.png')
+       game.load.image('buttonLeft','assets/buttonLeftPressed.png')
+       game.load.image('buttonDown','assets/buttonDownPressed.png')
+       game.load.image('buttonRight','assets/buttonRightPressed.png')
     }
  
     function create() {
@@ -283,6 +287,19 @@ $(()=>{
      scoreText3 = game.add.text(16, 44, 'Energia', { fontSize: '20px', fill:'#ffffff' })
  
     }
+
+    // Buttons
+    let buttonUp = new Button(game, 750, 550,'buttonUp', () => {
+      if(!playerHitsPlatform){
+         player.body.velocity.y = -30
+         player.position.y -= 3
+         if(playerDirection == 'right'){
+            player.animations.play('moveRight')
+         } else if(playerDirection == 'left') {
+            player.animations.play('moveLeft')
+         }
+      }
+    }, this)
  
     function update() {  
        rocksPosition.forEach((rock)=> {
