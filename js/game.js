@@ -211,6 +211,19 @@ $(()=>{
    function actionOnClickRight(){
       isButtonRight = true
    }
+
+   function resize() {
+      var canvas = game.canvas, width = window.innerWidth, height = window.innerHeight;
+      var wratio = width / height, ratio = canvas.width / canvas.height;
+
+      if (wratio < ratio) {
+            canvas.style.width = width + 'px';
+            canvas.style.height = (width / ratio) + 'px';
+      } else {
+            canvas.style.width = (height * ratio) + 'px';
+            canvas.style.height = height + 'px';
+      }
+   }
  
     function checkScore() {
        if(score.progress == 100){
@@ -258,26 +271,29 @@ $(()=>{
     }
  
     function create() {
-    initialTime = new Date().getTime()
- 
-    // Enabling Arcade Physics System
-    game.physics.startSystem(Phaser.Physics.ARCADE)
- 
-    // sky
-    game.add.sprite(0,0,'background')
- 
-    
-   // Platforms group will contain ground and a platform for testing obstacles functionality
-   platforms = game.add.group()
- 
-   // Enabling physics for objects belonging to platforms group
-   platforms.enableBody = true
-   // Ground creation
-   var ground = platforms.create(0, game.world.height - 40, 'ground')
-   // Scale 'ground' object to fit the width of the game
-   ground.scale.setTo(2,2)
-   ground.body.immovable = true
-     
+   
+      window.addEventListener('resize', resize);
+      resize();
+   
+   
+      // Enabling Arcade Physics System
+      game.physics.startSystem(Phaser.Physics.ARCADE)
+   
+      // sky
+      game.add.sprite(0,0,'background')
+   
+      
+      // Platforms group will contain ground and a platform for testing obstacles functionality
+      platforms = game.add.group()
+   
+      // Enabling physics for objects belonging to platforms group
+      platforms.enableBody = true
+      // Ground creation
+      var ground = platforms.create(0, game.world.height - 40, 'ground')
+      // Scale 'ground' object to fit the width of the game
+      ground.scale.setTo(2,2)
+      ground.body.immovable = true
+      
      // rocks
      rocks = game.add.group()
      rocks.enableBody = true
