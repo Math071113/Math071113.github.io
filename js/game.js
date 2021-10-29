@@ -333,19 +333,19 @@ $(()=>{
      scoreText3 = game.add.text(16, 44, 'Energia', { fontSize: '20px', fill:'#ffffff' })
 
      // Buttons
-      buttonUp = game.add.button(800 - 140, 400,'buttonUpBig', actionOnClickUp , this)
+      buttonUp = game.add.button(800 - 140, 50,'buttonUpBig', actionOnClickUp , this)
       buttonUp.onInputUp.add(()=> isButtonUp = false, this)
       buttonUp.onInputDown.add(()=> isButtonUp = true, this)
     
-      buttonLeft = game.add.button(800 - 210, 440,'buttonLeftBig', actionOnClickLeft , this)
+      buttonLeft = game.add.button(800 - 210, 90,'buttonLeftBig', actionOnClickLeft , this)
       buttonLeft.onInputUp.add(()=> isButtonLeft = false, this)
       buttonLeft.onInputDown.add(()=> isButtonLeft = true, this)
     
-      buttonDown = game.add.button(800 -140, 480,'buttonDownBig', actionOnClickDown , this)
+      buttonDown = game.add.button(800 -140, 130,'buttonDownBig', actionOnClickDown , this)
       buttonDown.onInputUp.add(()=> isButtonDown = false, this)
       buttonDown.onInputDown.add(()=> isButtonDown = true, this)
     
-      buttonRight = game.add.button(800 - 70, 440,'buttonRightBig', actionOnClickRight , this)
+      buttonRight = game.add.button(800 - 70, 90,'buttonRightBig', actionOnClickRight , this)
       buttonRight.onInputUp.add(()=> isButtonRight = false, this)
       buttonRight.onInputDown.add(()=> isButtonRight = true, this)
    
@@ -429,6 +429,7 @@ $(()=>{
           }
        } else{
           if(playerDirection == 'left'){
+             
              player.frame = 28   
           } else if(playerDirection == 'right'){
              player.frame = 70
