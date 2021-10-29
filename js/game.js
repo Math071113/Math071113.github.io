@@ -213,15 +213,18 @@ $(()=>{
    }
 
    function resize() {
-      var canvas = game.canvas, width = window.innerWidth, height = window.innerHeight;
-      var wratio = width / height, ratio = canvas.width / canvas.height;
+      var canvas = game.canvas 
+      var width = document.getElementsByClassName('mainWrapper')[0].offsetWidth
+      var height = window.innerHeight
+      var wratio = width / height
+      var ratio = canvas.width / canvas.height;
 
       if (wratio < ratio) {
-            canvas.style.width = width + 'px';
-            canvas.style.height = (width / ratio) + 'px';
+            canvas.style.width = width + 'px'
+            canvas.style.height = (width / ratio) + 'px'
       } else {
-            canvas.style.width = (height * ratio) + 'px';
-            canvas.style.height = height + 'px';
+            canvas.style.width = (height * ratio) + 'px'
+            canvas.style.height = height + 'px'
       }
    }
  
@@ -271,9 +274,8 @@ $(()=>{
     }
  
     function create() {
-   
-      window.addEventListener('resize', resize);
-      resize();
+      window.addEventListener('resize', resize)
+      resize()
    
    
       // Enabling Arcade Physics System
@@ -369,7 +371,8 @@ $(()=>{
    
    }
  
-    function update() {  
+    function update() { 
+        
        rocksPosition.forEach((rock)=> {
           if(rock.x <= 30) {
              rock.kill()
