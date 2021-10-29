@@ -1,6 +1,8 @@
 
 $(()=>{
 
+   let windowWidth = window.innerWidth
+   let windowHeight = window.innerHeight
    let initialAudio = new Audio('../assets/friendbotInitialAudio.mp3')
    
    initialAudio.addEventListener('ended', ()=>{
@@ -72,8 +74,8 @@ $(()=>{
 })
 
 
-  var gameWidth = 800
-  var gameHeight = 600
+   var gameWidth = 800
+   var gameHeight = windowHeight < 600 ? 500 : 600 
 
 
   // GAME VARIABLES
@@ -248,6 +250,10 @@ $(()=>{
        game.load.image('buttonLeft','assets/buttonLeftPressed.png')
        game.load.image('buttonDown','assets/buttonDownPressed.png')
        game.load.image('buttonRight','assets/buttonRightPressed.png')
+       game.load.image('buttonUpBig','assets/buttonUpPressedBigger.png')
+       game.load.image('buttonLeftBig','assets/buttonLeftPressedBigger.png')
+       game.load.image('buttonDownBig','assets/buttonDownPressedBigger.png')
+       game.load.image('buttonRightBig','assets/buttonRightPressedBigger.png')
     }
  
     function create() {
@@ -311,21 +317,39 @@ $(()=>{
      scoreText3 = game.add.text(16, 44, 'Energia', { fontSize: '20px', fill:'#ffffff' })
 
      // Buttons
-     buttonUp = game.add.button(800 - 100, 400,'buttonUp', ()=> console.log('up') , this)
-     buttonUp.onInputUp.add(()=> isButtonUp = false, this)
-     buttonUp.onInputDown.add(()=> isButtonUp = true, this)
-     
-     buttonLeft = game.add.button(800 - 140, 440,'buttonLeft', ()=> console.log('left') , this)
-     buttonLeft.onInputUp.add(()=> isButtonLeft = false, this)
-     buttonLeft.onInputDown.add(()=> isButtonLeft = true, this)
-     
-     buttonDown = game.add.button(800 -100, 480,'buttonDown', ()=> console.log('down') , this)
-     buttonDown.onInputUp.add(()=> isButtonDown = false, this)
-     buttonDown.onInputDown.add(()=> isButtonDown = true, this)
-     
-     buttonRight = game.add.button(800 - 60, 440,'buttonRight', ()=> console.log('right') , this)
-     buttonRight.onInputUp.add(()=> isButtonRight = false, this)
-     buttonRight.onInputDown.add(()=> isButtonRight = true, this)
+     if(!windowWidth < 600){
+      buttonUp = game.add.button(800 - 100, 400,'buttonUp', ()=> console.log('up') , this)
+      buttonUp.onInputUp.add(()=> isButtonUp = false, this)
+      buttonUp.onInputDown.add(()=> isButtonUp = true, this)
+    
+      buttonLeft = game.add.button(800 - 140, 440,'buttonLeft', ()=> console.log('left') , this)
+      buttonLeft.onInputUp.add(()=> isButtonLeft = false, this)
+      buttonLeft.onInputDown.add(()=> isButtonLeft = true, this)
+    
+      buttonDown = game.add.button(800 -100, 480,'buttonDown', ()=> console.log('down') , this)
+      buttonDown.onInputUp.add(()=> isButtonDown = false, this)
+      buttonDown.onInputDown.add(()=> isButtonDown = true, this)
+    
+      buttonRight = game.add.button(800 - 60, 440,'buttonRight', ()=> console.log('right') , this)
+      buttonRight.onInputUp.add(()=> isButtonRight = false, this)
+      buttonRight.onInputDown.add(()=> isButtonRight = true, this)  
+   } else if(windowWidth < 600 ){
+      buttonUp = game.add.button(800 - 140, 400,'buttonUpBig', ()=> console.log('up') , this)
+      buttonUp.onInputUp.add(()=> isButtonUp = false, this)
+      buttonUp.onInputDown.add(()=> isButtonUp = true, this)
+    
+      buttonLeft = game.add.button(800 - 210, 440,'buttonLeftBig', ()=> console.log('left') , this)
+      buttonLeft.onInputUp.add(()=> isButtonLeft = false, this)
+      buttonLeft.onInputDown.add(()=> isButtonLeft = true, this)
+    
+      buttonDown = game.add.button(800 -140, 480,'buttonDownBig', ()=> console.log('down') , this)
+      buttonDown.onInputUp.add(()=> isButtonDown = false, this)
+      buttonDown.onInputDown.add(()=> isButtonDown = true, this)
+    
+      buttonRight = game.add.button(800 - 70, 440,'buttonRightBig', ()=> console.log('right') , this)
+      buttonRight.onInputUp.add(()=> isButtonRight = false, this)
+      buttonRight.onInputDown.add(()=> isButtonRight = true, this)
+      }
     }
  
     function update() {  
