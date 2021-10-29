@@ -92,6 +92,14 @@ $(()=>{
       energy:100,
    }
    var playerDirection = 'right'
+   var buttonUp
+   var buttonLeft
+   var buttonDown
+   var buttonRight
+   var isButtonUp
+   var isButtonDown
+   var isButtonLeft
+   var isButtonRight
    
    // GAME SPRITES
    var platforms
@@ -184,6 +192,22 @@ $(()=>{
        energyBarMask.beginFill(0xff0000)
        energyBarMask.drawRoundedRect(0, 0, (score.energy * (energyBar.width/100)), energyBar.height, 9)
     }
+
+   function actionOnClickUp(){
+      isButtonUp = true 
+   }
+   
+   function actionOnClickLeft(){
+      isButtonLeft = true
+   }
+   
+   function actionOnClickDown(){
+      isButtonDown = true
+   }
+
+   function actionOnClickRight(){
+      isButtonRight = true
+   }
  
     function checkScore() {
        if(score.progress == 100){
@@ -285,21 +309,24 @@ $(()=>{
        
      scoreText2 = game.add.text(16, 14, 'Progresso', { fontSize: '20px', fill:'#ffffff' })
      scoreText3 = game.add.text(16, 44, 'Energia', { fontSize: '20px', fill:'#ffffff' })
- 
-    }
 
-    // Buttons
-    let buttonUp = new Button(game, 750, 550,'buttonUp', () => {
-      if(!playerHitsPlatform){
-         player.body.velocity.y = -30
-         player.position.y -= 3
-         if(playerDirection == 'right'){
-            player.animations.play('moveRight')
-         } else if(playerDirection == 'left') {
-            player.animations.play('moveLeft')
-         }
-      }
-    }, this)
+     // Buttons
+     buttonUp = game.add.button(800 - 100, 400,'buttonUp', ()=> console.log('up') , this)
+     buttonUp.onInputUp.add(()=> isButtonUp = false, this)
+     buttonUp.onInputDown.add(()=> isButtonUp = true, this)
+     
+     buttonLeft = game.add.button(800 - 140, 440,'buttonLeft', ()=> console.log('left') , this)
+     buttonLeft.onInputUp.add(()=> isButtonLeft = false, this)
+     buttonLeft.onInputDown.add(()=> isButtonLeft = true, this)
+     
+     buttonDown = game.add.button(800 -100, 480,'buttonDown', ()=> console.log('down') , this)
+     buttonDown.onInputUp.add(()=> isButtonDown = false, this)
+     buttonDown.onInputDown.add(()=> isButtonDown = true, this)
+     
+     buttonRight = game.add.button(800 - 60, 440,'buttonRight', ()=> console.log('right') , this)
+     buttonRight.onInputUp.add(()=> isButtonRight = false, this)
+     buttonRight.onInputDown.add(()=> isButtonRight = true, this)
+    }
  
     function update() {  
        rocksPosition.forEach((rock)=> {
@@ -319,7 +346,7 @@ $(()=>{
        var playerHitsPlatform = game.physics.arcade.collide(player, platforms)
        
        player.body.velocity.x = 0
-       if(cursors.up.isDown && !playerHitsPlatform){
+       if((cursors.up.isDown || isButtonUp) && !playerHitsPlatform){
           player.body.velocity.y = -30
           player.position.y -= 3
           if(playerDirection == 'right'){
@@ -327,17 +354,17 @@ $(()=>{
           } else if(playerDirection == 'left') {
              player.animations.play('moveLeft')
           }
-       } else if(cursors.down.isDown && !playerHitsPlatform) {
+       } else if((cursors.down.isDown || isButtonDown) && !playerHitsPlatform) {
           player.body.velocity.y = 30
           player.position.y += 3
-       } else if(cursors.right.isDown && !playerHitsPlatform) {
+       } else if((cursors.right.isDown || isButtonRight) && !playerHitsPlatform) {
           if(playerDirection !== 'right'){
              playerDirection = 'right'
           }
           player.body.velocity.x = 30
           player.position.x += 3
           player.animations.play('moveRight')
-       }  else if(cursors.left.isDown && !playerHitsPlatform){
+       }  else if((cursors.left.isDown || isButtonLeft) && !playerHitsPlatform){
           if(playerDirection !== 'left'){
              playerDirection = 'left'
           }
@@ -345,21 +372,21 @@ $(()=>{
           player.position.x -= 3
           player.animations.play('moveLeft')
        } else if(playerHitsPlatform) {
-          if(cursors.right.isDown){
+          if(cursors.right.isDown || isButtonRight){
              if(playerDirection !== 'right'){
                 playerDirection = 'right'
              }
              player.body.velocity.x = 20
              player.position.x += 2
              player.animations.play('walkRight')
-          } else if(cursors.left.isDown){
+          } else if(cursors.left.isDown || isButtonLeft){
              if(playerDirection !== 'left'){
                 playerDirection = 'left'
              }
              player.body.velocity.x = -20
              player.position.x -= 2
              player.animations.play('walkLeft')
-          } else if(cursors.up.isDown) {
+          } else if(cursors.up.isDown || isButtonUp) {
              if(playerDirection == 'left'){
                 player.frame = 28
                 player.body.velocity.y = -30
