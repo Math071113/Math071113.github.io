@@ -1,8 +1,7 @@
 
 $(()=>{
 
-   let windowWidth = window.innerWidth
-   let windowHeight = window.innerHeight
+   llet windowHeight = window.innerHeight
    let initialAudio = new Audio('../assets/friendbotInitialAudio.mp3')
    
    initialAudio.addEventListener('ended', ()=>{
@@ -236,7 +235,7 @@ $(()=>{
           $('.mainWrapper').find('#mainRow').append('<div class="col md-10 lg-8 d-flex p-2 initialMessage"></div>')
           $('.mainWrapper').find('.initialMessage').append('<div id="finalMessageDiv" class="w-50 h-75 p-1 mr-2"></div>')
           $('.mainWrapper').find('#finalMessageDiv').append('<div class="text-center mb-5"><p style="color:green;margin-bottom:0;">Muito obrigado amigo!</p><p style="color:green;">Você me salvou!</p></div>')
-          $('.mainWrapper').find('#finalMessageDiv').append('<div id="finalBtnsDiv" class="w-100 h-75 p-1"></div>')
+          $('.mainWrapper').find('#finalMessageDiv').append('<div id="finalBtnsDiv" class="w-100 h-50 p-1"></div>')
           $('.mainWrapper').find('#finalBtnsDiv').append('<div class="w-100 mb-2"><button id="friendbotFinalInfo" class="btn-success w-100 p-1 rounded">Escute o Asteróide</button></div>')
           $('.mainWrapper').find('#finalBtnsDiv').append('<div class="w-100"><button id="backToStart" class="btn-primary w-100 p-1 rounded">Voltar ao início</button></div>')
           $('.mainWrapper').find('.initialMessage').append(friendbotImageDiv)
@@ -247,7 +246,7 @@ $(()=>{
          $('.mainWrapper').find('#mainRow').append('<div class="col md-10 lg-8 d-flex p-2 initialMessage"></div>')
          $('.mainWrapper').find('.initialMessage').append('<div id="finalMessageDiv" class="w-50 h-75 p-1"></div>')
          $('.mainWrapper').find('#finalMessageDiv').append('<div class="text-center mb-5"><p style="color:red; margin-bottom:0">Não foi desta vez!</p><p style="color:red;">Tente de novo!</p></div>')
-         $('.mainWrapper').find('#finalMessageDiv').append('<div id="finalBtnsDiv" class="w-100 h-75 p-1"></div>')
+         $('.mainWrapper').find('#finalMessageDiv').append('<div id="finalBtnsDiv" class="w-100 h-50 p-1"></div>')
          $('.mainWrapper').find('#finalBtnsDiv').append('<div class="d-flex justify-content-center"><button id="tryAgain" class="btn-primary w-75">Tente de novo!</button></div>')
          $('.mainWrapper').find('.initialMessage').append(friendbotImageDiv)
        } else {
